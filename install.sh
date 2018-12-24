@@ -92,6 +92,3 @@ tee <<-EOF
 ↘️  Start AnyTime By Typing >>> plexguide
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
-&& cp /opt/plexguide/menu/alias/templates/plexguide /bin/
-cp /opt/plexguide/menu/alias/templates/plexguide /bin/plexguide
