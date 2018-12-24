@@ -44,6 +44,9 @@ mkdir -p /var/plexguide
 bash /opt/pgstage/pyansible.sh
 echo "50" > /var/plexguide/pg.pythonstart.stored
 
+ansible-playbook /opt/pgstage/clone.yml
+cp /opt/plexguide/menu/alias/templates/plexguide /bin/plexguide
+
 apt-get install dialog -y
 
 tee <<-EOF
