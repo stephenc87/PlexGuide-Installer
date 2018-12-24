@@ -1,4 +1,3 @@
-pythonstart () {
   apt-get install -y --reinstall \
       nano \
       git \
@@ -35,4 +34,3 @@ pythonstart () {
 
   # Variables Need to Line Up with pg.sh (start)
   touch /var/plexguide/background.1
-}
