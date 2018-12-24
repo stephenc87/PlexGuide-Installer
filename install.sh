@@ -38,6 +38,7 @@ if [ -e "$file" ]; then rm -rf /opt/pgstage; fi
 apt-get install git -y
 apt-get install zip -y
 apt-get install unzip -y
+rm -r /opt/pgstage/place.holder 1>/dev/null 2>&1
 git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
 
 mkdir -p /var/plexguide
