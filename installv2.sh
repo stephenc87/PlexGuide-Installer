@@ -30,19 +30,26 @@ sleep 3
 
 # Delete If it Exist for Cloning
 file="/opt/plexguide"
-if [ -e "$file" ]; then rm -rf /opt/plexguide; fi
+if [ -e "$file" ]; then rm -rff /opt/plexguide; fi
 
 file="/opt/pgstage"
-if [ -e "$file" ]; then rm -rf /opt/pgstage; fi
+if [ -e "$file" ]; then rm -rff /opt/pgstage; fi
 
 apt-get install git -y
 apt-get install zip -y
 apt-get install unzip -y
-rm -r /opt/pgstage/place.holder 1>/dev/null 2>&1
+rm -rf /opt/pgstage/place.holder 1>/dev/null 2>&1
 git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
 
 mkdir -p /var/plexguide
+echo "50" > /var/plexguide/pg.pythonstart
+touch /var/plexguide/pg.pythonstart.stored
+start=$(cat /var/plexguide/pg.pythonstart)
+stored=$(cat /var/plexguide/pg.pythonstart.stored)
+
+if [ "$start" != "$stored" ]; then
 bash /opt/pgstage/pyansible.sh
+fi
 echo "50" > /var/plexguide/pg.pythonstart.stored
 
 ansible-playbook /opt/pgstage/clone.yml
