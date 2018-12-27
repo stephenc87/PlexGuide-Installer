@@ -32,5 +32,8 @@
   echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
   echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 
+  # Remove Cows when cowsay installed on main system
+  echo "nocows = 1" >> /etc/ansible/ansible.cfg
+
   # Variables Need to Line Up with pg.sh (start)
   touch /var/plexguide/background.1
