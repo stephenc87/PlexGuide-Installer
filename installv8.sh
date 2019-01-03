@@ -20,7 +20,7 @@ must be installed on a FRESH BOX! Exiting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    exit; fi
+    exit; fi; fi
 
 # Add APT repos
 apt-get install software-properties-common -y
