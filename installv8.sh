@@ -21,7 +21,7 @@ must be installed on a FRESH BOX! Exiting!
 
 EOF
     exit; fi
-    
+
 # Add APT repos
 apt-get install software-properties-common -y
 add-apt-repository main
