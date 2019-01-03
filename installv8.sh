@@ -39,7 +39,10 @@ apt-get install git -y
 apt-get install zip -y
 apt-get install unzip -y
 rm -rf /opt/pgstage/place.holder 1>/dev/null 2>&1
-git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
+
+# git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
+
+git clone next https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
 
 mkdir -p /var/plexguide
 echo "50" > /var/plexguide/pg.pythonstart
@@ -85,7 +88,7 @@ tee <<-EOF
 ✅️  PASSED! The PlexGuide Command Installed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-rm -rf /var/plexguide/new.install 1>/dev/null 2>&1 
+rm -rf /var/plexguide/new.install 1>/dev/null 2>&1
 sleep 2
 chmod 755 /bin/plexguide
 chown 1000:1000 /bin/plexguide
