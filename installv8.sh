@@ -8,7 +8,7 @@
 file="/var/plexguide/pg.number"
 if [ -e "$file" ]; then
   check="$(cat /var/plexguide/pg.number | head -c 1)"
-  if [[ "$check" == "5" || "$check" == "6" || "$check" == "7" ]]; then
+  if [ "$check" == "5" ]; then
 
 tee <<-EOF
 
