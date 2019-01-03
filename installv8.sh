@@ -30,10 +30,10 @@ sleep 3
 
 # Delete If it Exist for Cloning
 file="/opt/plexguide"
-if [ -e "$file" ]; then rm -rff /opt/plexguide; fi
+if [ -e "$file" ]; then rm -rf /opt/plexguide; fi
 
 file="/opt/pgstage"
-if [ -e "$file" ]; then rm -rff /opt/pgstage; fi
+if [ -e "$file" ]; then rm -rf /opt/pgstage; fi
 
 apt-get install git -y
 apt-get install zip -y
