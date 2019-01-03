@@ -1,5 +1,2 @@
 7.7.5
-7.7.5
-#####################-KEEP-HERE-####-FIRST-IS-LATEST-VERSION-###-SECOND-IS-LATEST-BETA-VERSION
 next
-7.7edge
