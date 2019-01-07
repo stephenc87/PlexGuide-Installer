@@ -10,3 +10,4 @@ blitzv2.2
 ########################### COMMAND BELOW IS FOR INTERNAL TESTING
 next
 blitzv2.1
+blitzv2test
