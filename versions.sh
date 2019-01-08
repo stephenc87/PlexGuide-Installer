@@ -1,5 +1,5 @@
 8.0.12
-blitzv2.2
+blitzv2.3
 ########################### VERSION BELOW ARE PRIOR
 8.0.11
 8.0.10
@@ -9,5 +9,4 @@ blitzv2.2
 8.0.6
 ########################### COMMAND BELOW IS FOR INTERNAL TESTING
 next
-blitzv2.1
 blitzv2test
