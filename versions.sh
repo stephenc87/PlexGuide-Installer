@@ -1,5 +1,5 @@
 8.0.16
-v8
+8.1.beta1
 ########################### VERSION BELOW ARE PRIOR
 8.0.15
 8.0.14
@@ -12,5 +12,7 @@ v8
 8.0.7
 8.0.6
 ########################### COMMAND BELOW IS FOR INTERNAL TESTING
+v8.1
+v8
 next
 blitzv2test
