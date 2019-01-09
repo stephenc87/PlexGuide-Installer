@@ -1,5 +1,5 @@
 8.0.14
-blitzv2.6
+blitzv2.7
 ########################### VERSION BELOW ARE PRIOR
 8.0.13
 8.0.12
