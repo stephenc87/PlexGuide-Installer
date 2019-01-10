@@ -13,6 +13,6 @@
 8.0.6
 ########################### COMMAND BELOW IS FOR INTERNAL TESTING
 v8.1
-v8
+v8base
 next
 blitzv2test
