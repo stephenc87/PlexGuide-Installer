@@ -1,5 +1,5 @@
 8.1.7
-v8.1base
+8.2.0
 ###########################-VERSIONS-PRIOR
 8.1.5
 8.1.3
@@ -17,4 +17,6 @@ v8.1base
 8.0.7
 8.0.6
 ###########################-COMMANDS-BELOW-FOR-TESTING
+v8.1base
+v8.2base
 next
