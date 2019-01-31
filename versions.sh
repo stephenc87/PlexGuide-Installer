@@ -1,7 +1,6 @@
+8.3.7
 8.3.6
-8.3.5
 ###########################-VERSIONS-PRIOR
-8.3.4
 8.2.6
 ###### DONT RECOMMEND BELOW (NO LONGER UPDATED)
 8.1.8
