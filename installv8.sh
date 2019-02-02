@@ -11,6 +11,9 @@ add-apt-repository main
 add-apt-repository universe
 add-apt-repository restricted
 add-apt-repository multiverse
+#debian
+add-apt-repository non-free
+add-apt-repository contrib
 
 # Upgrade
 apt-get update -y
