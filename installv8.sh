@@ -41,7 +41,7 @@ rm -rf /opt/pgstage/place.holder 1>/dev/null 2>&1
 
 git clone -b v8 --single-branch https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
 
-mkdir -p /var/plexguide
+mkdir -p /var/plexguide/logs
 echo "50" > /var/plexguide/pg.pythonstart
 touch /var/plexguide/pg.pythonstart.stored
 start=$(cat /var/plexguide/pg.pythonstart)
