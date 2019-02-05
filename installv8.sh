@@ -5,72 +5,63 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-# Add APT repos
-apt-get install software-properties-common -y
-add-apt-repository main
-add-apt-repository universe
-add-apt-repository restricted
-add-apt-repository multiverse
-#debian
-add-apt-repository non-free
-add-apt-repository contrib
+# Setting variables
+PREFIX=/usr
 
-# Upgrade
-apt-get update -y
-
-tee <<-EOF
+tee <<-MSG-NOTICE
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎  INSTALLING: PlexGuide Notice
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 By Installing PlexGuide, you are agreeing to the terms and conditions
 of the GNUv3 Project License! Please Standby...
+Depends on git, zip, unzip, dialog
+WARNING
+Please make sure these are installed before continuing, old copies of
+plexguide will be deleted and new copy will be installed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-EOF
-sleep 3
+MSG-NOTICE
+read -rsn1 -p"Press any key to continue or Ctrl-C to cancel";echo
 
-# Delete If it Exist for Cloning
-file="/opt/plexguide"
-if [ -e "$file" ]; then rm -rf /opt/plexguide; fi
+# remove any old files
+rm -rf /opt/plexguide  1>/dev/null 2>&1
+rm -rf /opt/pgstage  1>/dev/null 2>&1
 
-file="/opt/pgstage"
-if [ -e "$file" ]; then rm -rf /opt/pgstage; fi
-
-apt-get install git -y
-apt-get install zip -y
-apt-get install unzip -y
-rm -rf /opt/pgstage/place.holder 1>/dev/null 2>&1
-
+# Keeping things up to date
 git clone -b v8 --single-branch https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
 
+# initialize some paths
 mkdir -p /var/plexguide/logs
-echo "50" > /var/plexguide/pg.pythonstart
-touch /var/plexguide/pg.pythonstart.stored
-start=$(cat /var/plexguide/pg.pythonstart)
-stored=$(cat /var/plexguide/pg.pythonstart.stored)
+mkdir -p /opt/appdata/plexguide
 
-if [ "$start" != "$stored" ]; then
-bash /opt/pgstage/pyansible.sh
+# what is this?
+  echo "50" > /var/plexguide/pg.pythonstart
+  touch /var/plexguide/pg.pythonstart.stored
+  start=$(cat /var/plexguide/pg.pythonstart)
+  stored=$(cat /var/plexguide/pg.pythonstart.stored)
+
+if [ "$start" != "$stored" ];
+  then
+    bash /opt/pgstage/pyansible.sh
 fi
+
 echo "50" > /var/plexguide/pg.pythonstart.stored
 
 ansible-playbook /opt/pgstage/clone.yml
-cp /opt/plexguide/menu/alias/templates/plexguide /bin/plexguide
+cp /opt/plexguide/menu/alias/templates/plexguide $PREFIX/sbin/plexguide
 
-apt-get install dialog -y
 
-tee <<-EOF
+tee <<-MSG-VERIFY
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛  Verifiying PlexGuide Installed @ /bin/plexguide - Please Standby!
+⌛  Verifiying PlexGuide Installed @ $PREFIX/sbin/plexguide - Please Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 2
+MSG-VERIFY
 
-file="/bin/plexguide"
+file="$PREFIX/sbin/plexguide"
 if [ ! -e "$file" ]; then
-tee <<-EOF
+  tee <<-MSG-FAIL
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! Installed Failed! PlexGuide Command Missing!
@@ -78,29 +69,27 @@ tee <<-EOF
 Please Reinstall PlexGuide by running the Command Again! We are doing
 this to ensure that your installation continues to work!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-exit
+MSG-FAIL
+  exit
 fi
 
-tee <<-EOF
+tee <<-MSG-install
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  PASSED! The PlexGuide Command Installed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+MSG-INSTALLED
+# cleaning up
 rm -rf /var/plexguide/new.install 1>/dev/null 2>&1
-sleep 2
-chmod 755 /bin/plexguide
-chown 1000:1000 /bin/plexguide
 
-## Other Folders
-mkdir -p /opt/appdata/plexguide
-mkdir -p /var/plexguide
+# setting permissions
+chmod 755 $PREFIX/sbin/plexguide
+chown 1000:1000 $PREFIX/sbin/plexguide
 
-tee <<-EOF
+tee <<-MSG-COMPLETE
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  Start AnyTime By Typing >>> plexguide
+↘️  Start AnyTime By Typing >>> sudo plexguide
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-EOF
+MSG-COMPLETE
