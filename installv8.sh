@@ -15,7 +15,8 @@ tee <<-MSG-NOTICE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 By Installing PlexGuide, you are agreeing to the terms and conditions
 of the GNUv3 Project License! Please Standby...
-Depends on git, zip, unzip, dialog
+Depends on git, zip, unzip, dialog, docker, python-docker and 
+python-backports.ssl-match-hostname
 WARNING
 Please make sure these are installed before continuing, old copies of
 plexguide will be deleted and new copy will be installed
