@@ -6,7 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 # Add APT repos
-apt-get install software-properties-common -y
+apt-get install software-properties-common -y -qq
 add-apt-repository main
 add-apt-repository universe
 add-apt-repository restricted
@@ -15,8 +15,12 @@ add-apt-repository multiverse
 add-apt-repository non-free
 add-apt-repository contrib
 
+#apache2del-fix
+sudo service apache2 stop 
+apt-get purge apache2* -y -qq
+
 # Upgrade
-apt-get update -y
+apt-get update -y -qq
 
 tee <<-EOF
 
