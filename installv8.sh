@@ -19,8 +19,9 @@ add-apt-repository contrib
 sudo service apache2 stop 
 apt-get purge apache2* -y -qq
 
-# Upgrade
+# Upgrade & update
 apt-get update -y -qq
+apt-get upgrade -y -qq
 
 tee <<-EOF
 
