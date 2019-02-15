@@ -6,7 +6,6 @@
 # GNU:        General Public License v3.0
 ################################################################################
 # Add APT repos
-apt-get install software-properties-common -y -qq
 add-apt-repository main
 add-apt-repository universe
 add-apt-repository restricted
@@ -19,9 +18,11 @@ add-apt-repository contrib
 sudo service apache2 stop 
 apt-get purge apache2* -y -qq
 
-# Upgrade & update
-apt-get update -y -qq
-apt-get upgrade -y -qq
+=======
+# Upgrade
+apt-get update -y
+apt-get upgrade -y
+apt-get install software-properties-common git zip unzip dialog -y
 
 tee <<-EOF
 
@@ -42,9 +43,6 @@ if [ -e "$file" ]; then rm -rf /opt/plexguide; fi
 file="/opt/pgstage"
 if [ -e "$file" ]; then rm -rf /opt/pgstage; fi
 
-apt-get install git -y
-apt-get install zip -y
-apt-get install unzip -y
 rm -rf /opt/pgstage/place.holder 1>/dev/null 2>&1
 
 git clone -b v8 --single-branch https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
@@ -63,7 +61,6 @@ echo "50" > /var/plexguide/pg.pythonstart.stored
 ansible-playbook /opt/pgstage/clone.yml
 cp /opt/plexguide/menu/alias/templates/plexguide /bin/plexguide
 
-apt-get install dialog -y
 
 tee <<-EOF
 
